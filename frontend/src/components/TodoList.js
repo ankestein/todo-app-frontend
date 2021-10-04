@@ -1,7 +1,7 @@
 import TodoItem from "./TodoItem";
-import './TodoBox.css'
+import './TodoList.css'
 
-export default function TodoBox({title, todos}) {
+export default function TodoList({title, todos}) {
     return (
         <div className='container'>
             <h2>{title}</h2>

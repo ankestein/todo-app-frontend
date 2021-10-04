@@ -11,21 +11,42 @@ function App() {
     const [task, setTask] = useState('')
 
 
-    console.log(jsonTodos);
+   /* console.log(jsonTodos);*/
 
- /*   useEffect(() => {
+    useEffect(() => {
         fetch('/api/todo')
-            . then(response => {
+            .then(response => {
                 if (response.ok) {
-                    console.log(response)
-                    response => setTodos(response)
+                    return response.json()
                 } else {
-                throw new Error('Failed to load todos')
+                    throw new Error('Failed to load todos')
                 }
             })
+            .then(json => setTodos(json))
+            .catch(error => console.error(error))
     }, [])
 
-  */
+
+                    /*
+                    .then(response => {
+                   // .then(response => setTodos(response.json()))
+                        if (response.ok) {
+                            console.log(response)
+                            console.log(`response: ${response}`)
+                            setTodos(response.json())
+                            //console.log(`My todo list: ${todos}`)
+                        } else {
+                        throw new Error('Failed to load todos')
+                        }
+                    })
+
+                }
+            }, [])
+
+                     */
+
+
+    console.log(`My todo list: ${todos}`)
 
 
 
@@ -42,7 +63,7 @@ function App() {
           <input type='text' className='input-field' placeholder='Enter new task' onInput='handleInput'/>
           <input type='submit' value='Submit'/>
 
-          <Board todos={jsonTodos}/>
+          <Board todos={todos}/>
 
       </>
   );
