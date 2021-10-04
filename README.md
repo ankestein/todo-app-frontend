@@ -1,10 +1,12 @@
-## Todo Kanban Board / Friday exercise
 
-Do the following steps to setup the project:
+# Freitagsaufgabe
 
-1. Create a spring initializer backend module
-2. Install Node via your terminal ( `brew install node` )
-3. run the `build-frontend.sh` script
-4. start the server and open your browser on http://localhost:8080 to see the frontend
-5. Happy hacking 👩‍💻 👨‍💻
+## Baue das Frontend der Todo-App.
 
+1. Forke dir das repo `git@github.com:christophersiem/rem-21-4-todo-app.git`
+2. Erstelle eine neue React App im `frontend` Ordner.
+3.  Füge in der `package.json` den Eintrag `"proxy": "http://localhost:8080"` hinzu.
+
+**Tip:** Mach dir ein Scribble vom Interface.
+
+**Bonus:** Schaue dir [axios](https://github.com/axios/axios) an und nutze es um deine Anfragen zu senden.
