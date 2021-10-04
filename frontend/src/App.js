@@ -2,7 +2,7 @@ import Header from './components/Header';
 import Board from './components/Board';
 import {useEffect, useState} from "react";
 import './App.css'
-import jsonTodos from "./todos.json";
+
 
 
 function App() {
@@ -11,7 +11,6 @@ function App() {
     const [task, setTask] = useState('')
 
 
-   /* console.log(jsonTodos);*/
 
     useEffect(() => {
         fetch('/api/todo')
@@ -25,28 +24,6 @@ function App() {
             .then(json => setTodos(json))
             .catch(error => console.error(error))
     }, [])
-
-
-                    /*
-                    .then(response => {
-                   // .then(response => setTodos(response.json()))
-                        if (response.ok) {
-                            console.log(response)
-                            console.log(`response: ${response}`)
-                            setTodos(response.json())
-                            //console.log(`My todo list: ${todos}`)
-                        } else {
-                        throw new Error('Failed to load todos')
-                        }
-                    })
-
-                }
-            }, [])
-
-                     */
-
-
-    console.log(`My todo list: ${todos}`)
 
 
 
