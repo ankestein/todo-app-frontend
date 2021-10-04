@@ -4,15 +4,12 @@ import {useEffect, useState} from "react";
 import './App.css'
 
 
-
 function App() {
 
     const [todos, setTodos] = useState([])
-    const [task, setTask] = useState('')
+    const [description, setDescription] = useState('')
 
-
-
-    useEffect(() => {
+    const getTodos = () => {
         fetch('/api/todo')
             .then(response => {
                 if (response.ok) {
@@ -23,29 +20,60 @@ function App() {
             })
             .then(json => setTodos(json))
             .catch(error => console.error(error))
-    }, [])
+    }
 
+    useEffect(() => getTodos, [])
 
 
     const handleInput = event => {
-        const newTask = event.target.value()
-        setTask(newTask);
+        const newDescription = event.target.value;
+        setDescription(newDescription);
+        addTodo(newDescription);
     }
+    console.log(`description: ${description}`)
+
+
+
+    const addTodo = (description) => {
+        const newTodo = {description: description, status: 'todo'};
+        fetch('api/todo', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(newTodo)
+        })
+            .then(response => {
+                if (response.ok) {
+                   getTodos()
+                } else {
+                    throw new Error('Failed to post and load todos')
+                }
+            })
+            .catch(error => console.error(error))
+    }
+
+/*
+    useEffect((description) => {
+        addTodo(description)
+    }, [description])
+ */
+
 
 
   return (
       <>
           <Header title='Kanban Board'/>
 
-          <input type='text' className='input-field' placeholder='Enter new task' onInput='handleInput'/>
-          <input type='submit' value='Submit'/>
+          <form onSubmit={handleInput}>
+              <input type='text' name='inputtodo' className='input-field' placeholder='Enter new task'
+                     onInput={handleInput}/>
+              <input type='submit' value='Submit'/>
+          </form>
 
           <Board todos={todos}/>
 
       </>
   );
 }
-
 
 
 export default App;
