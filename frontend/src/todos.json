@@ -1,0 +1,22 @@
+[
+  {
+    "id": null,
+    "description": "Style frontend",
+    "status": "doing"
+  },
+  {
+    "id": null,
+    "description": "Write unit tests",
+    "status": "done"
+  },
+  {
+    "id": null,
+    "description": "Write integration tests",
+    "status": "done"
+  },
+  {
+    "id": null,
+    "description": "Cook dinner",
+    "status": "todo"
+  }
+]
