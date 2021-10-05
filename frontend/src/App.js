@@ -24,16 +24,17 @@ function App() {
 
     useEffect(() => getTodos(), [])
 
-
     const handleInput = event => {
-        event.preventDefault();
         const newDescription = event.target.value;
         setDescription(newDescription);
-        addTodo(description);
     }
-    console.log(`description: ${description}`)
 
 
+    const handleSubmit = event => {
+        event.preventDefault();
+        addTodo(description);
+        setDescription('');
+    }
 
     const addTodo = (description) => {
         const newTodo = {description: description, status: 'todo'};
@@ -59,17 +60,12 @@ function App() {
  */
 
 
-// if handleInput is included in input field, adding todos
-// works except that a new task is added for every added character (i.e. not after pressing submit button or enter)
-// if handleInput is used in form, description is undefined and not todos are added
-
-
   return (
       <>
           <Header title='Kanban Board'/>
 
-          <form onSubmit={handleInput}>
-              <input type='text' name='inputtodo' className='input-field' placeholder='Enter new task'/>
+          <form onSubmit={handleSubmit}>
+              <input type='text' name='input-todo' className='input-field' placeholder='Enter new task' onInput={handleInput}/>
               <input type='submit' value='Submit'/>
           </form>
 
