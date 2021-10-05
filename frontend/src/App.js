@@ -65,7 +65,7 @@ function App() {
           <Header title='Kanban Board'/>
 
           <form onSubmit={handleSubmit}>
-              <input type='text' name='input-todo' className='input-field' placeholder='Enter new task' onInput={handleInput}/>
+              <input type='text' name='input-todo' value={description} className='input-field' placeholder='Enter new task' onInput={handleInput}/>
               <input type='submit' value='Submit'/>
           </form>
 
